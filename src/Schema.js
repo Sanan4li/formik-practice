@@ -1,10 +1,10 @@
 import * as Yup from "yup";
 export const signInInitialValues = {
-  userName: "",
+  userName: "dsfdsf",
   password: "",
   gender: "",
   age: "",
-  dob: "",
+  dob: new Date(),
   comments: "",
 };
 export const signInValidationSchema = Yup.object().shape({

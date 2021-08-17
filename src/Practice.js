@@ -1,18 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import { inputTypes } from "./types";
 import CustomInput from "./CustomInput";
 import SubmitButton from "./SubmitButton";
 import { signInInitialValues, signInValidationSchema } from "./Schema";
 const Practice = () => {
+  const [initialValues, setInitialValues] = useState({
+    ...signInInitialValues,
+  });
   const submitHandler = (values) => {
     console.log(values);
   };
+  const handleReset = () => {
+    setInitialValues(null);
+    setInitialValues({
+      userName: "sdfsdf",
+      password: "",
+      gender: "",
+      age: "23",
+      dob: "sdf",
+      comments: "sdf",
+    });
+  };
+  console.log(initialValues);
   return (
     <div>
       <Formik
-        initialValues={signInInitialValues}
+        initialValues={initialValues}
         validationSchema={signInValidationSchema}
+        enableReinitialize={true}
         onSubmit={submitHandler}
       >
         <div>
@@ -48,6 +64,7 @@ const Practice = () => {
             label="Comments"
           />
           <SubmitButton value="Sign In" name="signInButton" />
+          <input onClick={handleReset} type="reset" value="Reset and change" />
         </div>
       </Formik>
     </div>

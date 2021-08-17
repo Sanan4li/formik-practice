@@ -1,6 +1,6 @@
 import React from "react";
 
-const CheckBox = ({ name, label, onChange, ...rest }) => {
+const CheckBox = ({ name, label, value, onChange, ...rest }) => {
   const handleChange = (event) => {
     event.target.value = event.target.checked;
     onChange(event);
@@ -13,6 +13,7 @@ const CheckBox = ({ name, label, onChange, ...rest }) => {
         onChange={handleChange}
         name={name}
         id={name}
+        value={value}
         {...rest}
       />
       <label htmlFor={name}>{label}</label>
